@@ -2,19 +2,20 @@ import errorHandler from 'errorhandler';
 
 import app from './app';
 
+const init = app();
 /**
  * Error Handler. Provides full stack - remove for production
  */
-app.use(errorHandler());
+init.use(errorHandler());
 
 /**
  * Start Express server.
  */
-const server = app.listen(app.get('port'), () => {
+const server = init.listen(init.get('port'), () => {
   console.log(
     '  App is running at http://localhost:%d in %s mode',
-    app.get('port'),
-    app.get('env')
+    init.get('port'),
+    init.get('env')
   );
   console.log('  Press CTRL-C to stop\n');
 });

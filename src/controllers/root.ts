@@ -6,7 +6,7 @@ import { Request, Response } from 'express';
  * @desc Get all routes in JSON format
  */
 
-export const index = (req: Request, res: Response) => {
+export const index = async (req: Request, res: Response) => {
   res.json({
     story: {
       prompts: 'http://localhost:3000/api/story/prompts'

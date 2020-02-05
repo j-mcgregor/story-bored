@@ -1,5 +1,5 @@
 import { IOptions, IHead } from 'story';
-import { generateStoryLength, generateBodyStructure } from './helpers';
+import { generateStoryLength, generateBodyStructure, generateCharactersList } from './helpers';
 
 /**
  * @section HEAD
@@ -7,12 +7,16 @@ import { generateStoryLength, generateBodyStructure } from './helpers';
  * @returns interface IHead
  */
 
-export const createHead = (options: IOptions) => {
+export const createHead = (options: IOptions): IHead => {
   const head: IHead = {};
+
+  /* <<<<<<<<<<<<<<<<< GENRES >>>>>>>>>>>>>>>>> */
 
   if (options.genres) {
     head.genres = options.genres;
   }
+
+  /* <<<<<<<<<<<<<<<<< STRUCTURE >>>>>>>>>>>>>>>>> */
 
   if (options.structure) {
     head.structure = {
@@ -22,8 +26,17 @@ export const createHead = (options: IOptions) => {
     };
   }
 
+  /* <<<<<<<<<<<<<<<<< LENGTH >>>>>>>>>>>>>>>>> */
+
   if (options.length) {
     head.length = generateStoryLength(options.length);
+  }
+
+  /* <<<<<<<<<<<<<<<<< CHARACTERS >>>>>>>>>>>>>>>>> */
+
+  if (options.characters && options.characters.length) {
+    const chars = generateCharactersList(options.length);
+    console.log(chars);
   }
 
   return head;

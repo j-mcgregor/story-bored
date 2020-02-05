@@ -4,7 +4,8 @@ import {
   IStoryLength,
   ISection,
   IChapter,
-  ICharacter
+  ICharacterType,
+  ICharacterDesc
 } from '../../types/story';
 import { chunk } from 'lodash';
 import storyLengthTypes from './storyLengthTypes';
@@ -201,54 +202,41 @@ export const generateCharacterTypesList = (type: EStoryLength) => {
   }
 };
 
+const options = {
+  hair: {
+    color: true,
+    type: true
+  },
+  eyes: {
+    color: true,
+    shape: true,
+    eyebrows: true
+  },
+  face: {
+    shape: true,
+    features: true,
+    hair: true,
+    mouth: true,
+    nose: true
+  },
+  general: {
+    height: true,
+    build: true,
+    age: true,
+    skinType: true,
+    skinTone: true
+  },
+  personality: {
+    positive: true,
+    negative: true
+  }
+};
+
 export const generateCharactersList = (type: EStoryLength) => {
-  const listOfTypes = generateCharacterTypesList(type)[0];
-  // console.log(listOfTypes);
-  const listWithGeneratedCharacters = listOfTypes.map((char: any) => ({
-    ...char,
-    character: characterGenerator()
+  const listOfTypes: ICharacterType[] = generateCharacterTypesList(type)[0];
+  const listWithGeneratedCharacters: ICharacterDesc[] = listOfTypes.map((char: ICharacterType) => ({
+    type: char,
+    character: characterGenerator(options)
   }));
   return listWithGeneratedCharacters;
 };
-
-/**
- * CHARACTERS
- *
- * 1. Assume for now everything is auto generated
- * 2. Each story length should have a suggested character combination / allocation
- */
-
-/**
- * ALLOCATION
- *
- * FLASH:
- *   - PROTAGONIST
- *   - LOVE_INTEREST || ANTAGONIST || SYMBOLIC
- *
- * SHORT:
- *   - PROTAGONIST
- *   - DEUTERAGONIST || LOVE_INTEREST
- *   - ANTAGONIST || SYMBOLIC
- *
- * NOVELLA:
- *   - PROTAGONIST
- *   - ANTAGONIST
- *   - DEUTERAGONIST
- *   - CONFIDANTE || FOIL
- *   - LOVE_INTEREST
- *
- * NOVEL:
- *   - PROTAGONIST
- *   - ANTAGONIST x n
- *   - DEUTERAGONIST
- *   - CONFIDANTE || FOIL
- *   - LOVE_INTEREST x n
- *
- * EPIC:
- *   - PROTAGONIST x n
- *   - ANTAGONIST x n
- *   - DEUTERAGONIST x n
- *   - CONFIDANTE x n
- *   - FOIL x n
- *   - LOVE_INTEREST x n
- */

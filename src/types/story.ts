@@ -34,7 +34,8 @@ export interface IOptions {
   genres: string[];
   structure: IStructure;
   length: EStoryLength;
-  characters?: ICharacter[];
+  characters: boolean;
+  prompts: boolean;
 }
 
 export interface IStoryLength {
@@ -49,7 +50,87 @@ export interface IHead {
   genres?: string[];
   structure?: IStructure;
   length?: IStoryLength;
-  characters?: ICharacter[];
+  characters?: ICharacterDesc[];
+  prompts?: string;
+}
+
+/**
+ *
+ */
+
+export interface ICharacterType {
+  type: string;
+  category: string;
+  description: string;
+  examples: string[];
+}
+
+export interface ICharacterDesc {
+  type: ICharacterType;
+  character?: ICharGenerator;
+}
+
+export interface ICharGeneratorOptions {
+  hair?: {
+    color?: boolean;
+    type?: boolean;
+  };
+  eyes?: {
+    color?: boolean;
+    shape?: boolean;
+    eyebrows?: boolean;
+  };
+  face?: {
+    shape?: boolean;
+    features?: boolean;
+    hair?: boolean;
+    mouth?: boolean;
+    nose?: boolean;
+  };
+  general?: {
+    height?: boolean;
+    build?: boolean;
+    age?: boolean;
+    skinType?: boolean;
+    skinTone?: boolean;
+  };
+  personality?: {
+    positive?: boolean;
+    negative?: boolean;
+  };
+}
+
+export interface ICharGenerator {
+  name: string;
+  description: {
+    hair: {
+      color?: string;
+      type?: string;
+    };
+    eyes: {
+      color?: string;
+      shape?: string;
+      eyebrows?: string;
+    };
+    face: {
+      shape?: string;
+      features?: string;
+      hair?: string;
+      mouth?: string;
+      nose?: string;
+    };
+    general: {
+      height?: string;
+      build?: string;
+      age?: string;
+      skinType?: string;
+      skinTone?: string;
+    };
+    personality: {
+      positive?: string[];
+      negative?: string[];
+    };
+  };
 }
 
 /**

@@ -34,9 +34,7 @@ const init = () => {
       console.log('MongoDB connected');
     })
     .catch(err => {
-      console.log(
-        'MongoDB connection error. Please make sure MongoDB is running. ' + err
-      );
+      console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
       // process.exit();
     });
 
@@ -82,6 +80,7 @@ const init = () => {
 
   app.get('/api/story/prompts', storyController.getPrompts);
   app.post('/api/story/create', storyController.generateStructure);
+  app.get('/api/story/analyse', storyController.categorisePrompts);
 
   return app;
 };

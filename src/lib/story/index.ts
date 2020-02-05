@@ -1,5 +1,12 @@
 import { IOptions, IHead } from 'story';
-import { generateStoryLength, generateBodyStructure, generateCharactersList } from './helpers';
+import {
+  generateStoryLength,
+  generateBodyStructure,
+  generateCharactersList,
+  selectRandomItem
+} from './helpers';
+import prompts from '../../../json/writing_prompts.json';
+// import googleText from '../googleText';
 
 /**
  * @section HEAD
@@ -34,9 +41,14 @@ export const createHead = (options: IOptions): IHead => {
 
   /* <<<<<<<<<<<<<<<<< CHARACTERS >>>>>>>>>>>>>>>>> */
 
-  if (options.characters && options.characters.length) {
-    const chars = generateCharactersList(options.length);
-    console.log(chars);
+  if (options.characters) {
+    head.characters = generateCharactersList(options.length);
+  }
+
+  /* <<<<<<<<<<<<<<<<< PROMPTS >>>>>>>>>>>>>>>>> */
+
+  if (options.prompts) {
+    head.prompts = selectRandomItem(prompts);
   }
 
   return head;

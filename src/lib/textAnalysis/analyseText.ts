@@ -5,38 +5,31 @@ interface IPrompt {
   prompt: string;
 }
 
-interface ICategory {
-  sciFi: string[];
-  crime: string[];
-  romance: string[];
-  historical: string[];
-  inspirational: string[];
-}
-
 interface IPromptWithCategory {
   prompt: string;
   categories: string[];
 }
 
+const isPresent = (category: string, text: string) =>
+  keywords[category].some((v: string) => text.includes(v));
+const pushToCategories = (arr: string[], item: string) => arr.push(item);
+
 export default () => {
   const promptsWithCategories: IPromptWithCategory[] = prompts.map(
     (p: IPrompt): IPromptWithCategory => {
       const promptWithCategory: IPromptWithCategory = { prompt: p.prompt, categories: [] };
-      if (keywords.crime.some(v => p.prompt.includes(v))) {
-        promptWithCategory.categories.push('crime');
-      }
-      if (keywords.sciFi.some(v => p.prompt.includes(v))) {
-        promptWithCategory.categories.push('sciFi');
-      }
-      if (keywords.romance.some(v => p.prompt.includes(v))) {
-        promptWithCategory.categories.push('romance');
-      }
-      if (keywords.historical.some(v => p.prompt.includes(v))) {
-        promptWithCategory.categories.push('historical');
-      }
-      if (keywords.inspirational.some(v => p.prompt.includes(v))) {
-        promptWithCategory.categories.push('inspirational');
-      }
+      const { categories } = promptWithCategory;
+      const lowerCasePrompt = p.prompt.toLowerCase();
+
+      if (isPresent('sciFi', lowerCasePrompt)) pushToCategories(categories, 'sciFi');
+      if (isPresent('crime', lowerCasePrompt)) pushToCategories(categories, 'crime');
+      if (isPresent('horror', lowerCasePrompt)) pushToCategories(categories, 'horror');
+      if (isPresent('fantasy', lowerCasePrompt)) pushToCategories(categories, 'fantasy');
+      if (isPresent('romance', lowerCasePrompt)) pushToCategories(categories, 'romance');
+      if (isPresent('religious', lowerCasePrompt)) pushToCategories(categories, 'religious');
+      if (isPresent('historical', lowerCasePrompt)) pushToCategories(categories, 'historical');
+      if (isPresent('inspiration', lowerCasePrompt)) pushToCategories(categories, 'inspiration');
+
       return promptWithCategory;
     }
   );

@@ -79,8 +79,8 @@ const init = () => {
    */
 
   app.get('/api/story/prompts', storyController.getPrompts);
-  app.post('/api/story/create', storyController.generateStructure);
   app.get('/api/story/analyse', storyController.categorisePrompts);
+  app.post('/api/story/create', storyController.generateStructure);
 
   return app;
 };

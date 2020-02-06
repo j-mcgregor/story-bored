@@ -1,6 +1,5 @@
 export default [
   'snub',
-  'Roman',
   'aquiline',
   'broad',
   'bulbous',

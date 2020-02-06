@@ -19,7 +19,33 @@ import personalityTraits from './personalityTraits';
 import skinGeneral from './skinGeneral';
 import skinTone from './skinTone';
 
-export default {
+interface IDynamicProp {
+  [key: string]: string[];
+}
+interface ITraits {
+  age: string[];
+  build: IDynamicProp;
+  eyebrows: string[];
+  eyeColor: string[];
+  eyeShape: string[];
+  facialShape: string[];
+  facialHair: string[];
+  facialFeatures: string[];
+  generalAppearance: string[];
+  hairColor: string[];
+  hairColorAlternatives: IDynamicProp;
+  hairLength: string[];
+  hairTypes: string[];
+  hands: string[];
+  height: string[];
+  mouthLips: string[];
+  nose: string[];
+  personalityTraits: IDynamicProp;
+  skinGeneral: string[];
+  skinTone: string[];
+}
+
+export const traits: ITraits = {
   age,
   build,
   eyebrows,

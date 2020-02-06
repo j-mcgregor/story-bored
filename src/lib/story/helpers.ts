@@ -146,6 +146,13 @@ export const selectRandomItem = (arr: any[]): string => arr[Math.floor(Math.rand
 export const duplicateItems = (item: any, max: number) =>
   Array(Math.ceil(Math.random() * max)).fill(item);
 
+/**
+ *
+ * @func generateCharacterTypesList
+ * @param type => ['FLASH', 'SHORT' etc]
+ * @desc returns a semi-randomised list of main character types for the story depending on its length
+ */
+
 export const generateCharacterTypesList = (type: EStoryLength) => {
   if (Object.values(EStoryLength).includes(type)) {
     const {
@@ -235,14 +242,30 @@ const options = {
   }
 };
 
+/**
+ *
+ * @func generateCharactersList
+ * @param type => ['FLASH','SHORT'...]
+ * @desc maps over the character types and creates a random character profile for each one
+ */
+
 export const generateCharactersList = (type: EStoryLength) => {
   const listOfTypes: ICharacterType[] = generateCharacterTypesList(type)[0];
-  const listWithGeneratedCharacters: ICharacterDesc[] = listOfTypes.map((char: ICharacterType) => ({
-    type: char,
+  const listWithGeneratedCharacters: ICharacterDesc[] = listOfTypes.map((type: ICharacterType) => ({
+    type,
     character: characterGenerator(options)
   }));
   return listWithGeneratedCharacters;
 };
+
+/**
+ *
+ * @func promptsByGenre
+ * @param arr1 => categories assigned to the prompt
+ * @param arr2 => categories chosen by the user
+ * @param specific => option to match the user choices exactly
+ * @desc returns a random prompt if list contains a specific character
+ */
 
 export const promptsByGenre = (
   arr1: IPromptWithCategory[],
@@ -256,11 +279,7 @@ export const promptsByGenre = (
 
     return selectRandomItem(promptsWithXGenres);
   } else {
-    const result = arr1.filter(p => {
-      if (p.categories.some((c: EGenres) => arr2.includes(c))) {
-        return p;
-      }
-    });
+    const result = arr1.filter(p => p.categories.some((c: EGenres) => arr2.includes(c)));
     return selectRandomItem(result);
   }
 };

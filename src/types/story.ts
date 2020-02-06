@@ -104,6 +104,7 @@ export interface ICharGeneratorOptions {
 
 export interface ICharGenerator {
   name: string;
+  gender: string;
   description: {
     hair: {
       color?: string;

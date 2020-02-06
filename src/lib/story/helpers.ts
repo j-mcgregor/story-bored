@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   StructureType,
   EStoryLength,
@@ -5,12 +6,14 @@ import {
   ISection,
   IChapter,
   ICharacterType,
-  ICharacterDesc
+  ICharacterDesc,
+  EGenres
 } from '../../types/story';
 import { chunk } from 'lodash';
 import storyLengthTypes from './storyLengthTypes';
 import characterTypes from './characterTypes';
 import characterGenerator from './characterGenerator';
+import { IPromptWithCategory } from '../textAnalysis/analyseText';
 
 /**
  * @func: Calculates the number of words per section (start / middle / end) depending on if a prologue / epiloge section has been chosen
@@ -138,7 +141,7 @@ export const generateStoryLength = (type: EStoryLength): IStoryLength => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const selectRandomItem = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
+export const selectRandomItem = (arr: any[]): string => arr[Math.floor(Math.random() * arr.length)];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const duplicateItems = (item: any, max: number) =>
   Array(Math.ceil(Math.random() * max)).fill(item);
@@ -239,4 +242,25 @@ export const generateCharactersList = (type: EStoryLength) => {
     character: characterGenerator(options)
   }));
   return listWithGeneratedCharacters;
+};
+
+export const promptsByGenre = (
+  arr1: IPromptWithCategory[],
+  arr2: EGenres[],
+  specific: boolean
+): string => {
+  if (specific) {
+    const promptsWithXGenres = arr1
+      .filter(p => p.categories.length === arr2.length)
+      .filter(p => _.isEqual(_.sortBy(p.categories), _.sortBy(arr2)));
+
+    return selectRandomItem(promptsWithXGenres);
+  } else {
+    const result = arr1.filter(p => {
+      if (p.categories.some((c: EGenres) => arr2.includes(c))) {
+        return p;
+      }
+    });
+    return selectRandomItem(result);
+  }
 };

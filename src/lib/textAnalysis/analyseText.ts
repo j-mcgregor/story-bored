@@ -5,7 +5,7 @@ interface IPrompt {
   prompt: string;
 }
 
-interface IPromptWithCategory {
+export interface IPromptWithCategory {
   prompt: string;
   categories: string[];
 }
@@ -21,14 +21,14 @@ export default () => {
       const { categories } = promptWithCategory;
       const lowerCasePrompt = p.prompt.toLowerCase();
 
-      if (isPresent('sciFi', lowerCasePrompt)) pushToCategories(categories, 'sciFi');
-      if (isPresent('crime', lowerCasePrompt)) pushToCategories(categories, 'crime');
-      if (isPresent('horror', lowerCasePrompt)) pushToCategories(categories, 'horror');
-      if (isPresent('fantasy', lowerCasePrompt)) pushToCategories(categories, 'fantasy');
-      if (isPresent('romance', lowerCasePrompt)) pushToCategories(categories, 'romance');
-      if (isPresent('religious', lowerCasePrompt)) pushToCategories(categories, 'religious');
-      if (isPresent('historical', lowerCasePrompt)) pushToCategories(categories, 'historical');
-      if (isPresent('inspiration', lowerCasePrompt)) pushToCategories(categories, 'inspiration');
+      if (isPresent('sciFi', lowerCasePrompt)) pushToCategories(categories, 'SCIFI');
+      if (isPresent('crime', lowerCasePrompt)) pushToCategories(categories, 'CRIME');
+      if (isPresent('horror', lowerCasePrompt)) pushToCategories(categories, 'HORROR');
+      if (isPresent('fantasy', lowerCasePrompt)) pushToCategories(categories, 'FANTASY');
+      if (isPresent('romance', lowerCasePrompt)) pushToCategories(categories, 'ROMANCE');
+      if (isPresent('religious', lowerCasePrompt)) pushToCategories(categories, 'RELIGIOUS');
+      if (isPresent('historical', lowerCasePrompt)) pushToCategories(categories, 'HISTORICAL');
+      if (isPresent('inspiration', lowerCasePrompt)) pushToCategories(categories, 'INSPIRATION');
 
       return promptWithCategory;
     }

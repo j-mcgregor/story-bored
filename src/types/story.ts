@@ -31,7 +31,8 @@ export interface IStructure {
 }
 
 export interface IOptions {
-  genres: string[];
+  genres: EGenres[];
+  genreSpecific: boolean;
   structure: IStructure;
   length: EStoryLength;
   characters: boolean;
@@ -47,7 +48,8 @@ export interface IStoryLength {
 }
 
 export interface IHead {
-  genres?: string[];
+  genres?: EGenres[];
+  genreSpecific?: boolean;
   structure?: IStructure;
   length?: IStoryLength;
   characters?: ICharacterDesc[];
@@ -171,4 +173,15 @@ export enum ECharacterType {
   STOCK = 'STOCK',
   SYMBOLIC = 'SYMBOLIC',
   ROUND = 'ROUND'
+}
+
+export enum EGenres {
+  SCIFI = 'SCIFI',
+  CRIME = 'CRIME',
+  HORROR = 'HORROR',
+  FANTASY = 'FANTASY',
+  ROMANCE = 'ROMANCE',
+  RELIGIOUS = 'RELIGIOUS',
+  HISTORICAL = 'HISTORICAL',
+  INSPIRATION = 'INSPIRATION'
 }

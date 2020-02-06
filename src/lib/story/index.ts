@@ -3,9 +3,11 @@ import {
   generateStoryLength,
   generateBodyStructure,
   generateCharactersList,
-  selectRandomItem
+  selectRandomItem,
+  promptsByGenre
 } from './helpers';
 import prompts from '../../../json/writing_prompts.json';
+import promptsWithCategories from '../../../json/prompts_with_categories.json';
 // import googleText from '../googleText';
 
 /**
@@ -17,13 +19,32 @@ import prompts from '../../../json/writing_prompts.json';
 export const createHead = (options: IOptions): IHead => {
   const head: IHead = {};
 
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
   /* <<<<<<<<<<<<<<<<< GENRES >>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
 
   if (options.genres) {
     head.genres = options.genres;
   }
 
-  /* <<<<<<<<<<<<<<<<< STRUCTURE >>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<< PROMPTS >>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
+
+  if (options.prompts) {
+    if (!head.genres.length) {
+      head.prompts = selectRandomItem(prompts);
+    } else {
+      if (options.genreSpecific) {
+        head.prompts = promptsByGenre(promptsWithCategories, head.genres, true);
+      } else {
+        head.prompts = promptsByGenre(promptsWithCategories, head.genres, false);
+      }
+    }
+  }
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<< STRUCTURE >>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
 
   if (options.structure) {
     head.structure = {
@@ -32,23 +53,20 @@ export const createHead = (options: IOptions): IHead => {
       epilogue: options.structure.epilogue
     };
   }
-
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
   /* <<<<<<<<<<<<<<<<< LENGTH >>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
 
   if (options.length) {
     head.length = generateStoryLength(options.length);
   }
 
-  /* <<<<<<<<<<<<<<<<< CHARACTERS >>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<< CHARACTERS >>>>>>>>>>>>>>> */
+  /* <<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>> */
 
   if (options.characters) {
     head.characters = generateCharactersList(options.length);
-  }
-
-  /* <<<<<<<<<<<<<<<<< PROMPTS >>>>>>>>>>>>>>>>> */
-
-  if (options.prompts) {
-    head.prompts = selectRandomItem(prompts);
   }
 
   return head;

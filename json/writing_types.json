@@ -1,0 +1,37 @@
+[
+  {
+    "type": "Expository Writing",
+    "purpose": "To inform",
+    "features": "In an expository piece, a topic will be introduced and laid out in a logical order without reference to the author’s personal opinions",
+    "examples": [
+      "Textbooks Journalism (except for opinion and editorial articles)",
+      "Business writing",
+      "Technical writing",
+      "Essays Instructions"
+    ]
+  },
+  {
+    "type": "Descriptive Writing",
+    "purpose": "To picture",
+    "features": "help the reader visualize, in detail, a character, event, place, or all of these things at once. The author might describe the scene in terms of all five senses. Descriptive writing allows the writer a great deal more artistic freedom than expository writing doess",
+    "examples": ["Fiction", "Poetry", "Advertising", "Journal and diary writing"]
+  },
+  {
+    "type": "Persuasive Writing",
+    "purpose": "To persuade",
+    "features": "The aim of persuasive writing, or argumentation, is to influence the reader to assume the author’s point of view. The author will express personal opinions in the piece and arm him- or herself with evidence so that the reader will agree with him or her",
+    "examples": ["Advertising", "Opinion and editorial pieces", "Reviews", "Job applications"]
+  },
+  {
+    "type": "Narrative Writing",
+    "purpose": "To tell",
+    "features": "The purpose of narrative writing is to tell a story, whether that story is real or imaginary. Pieces in a narrative style will have characters, and through the narrative, the reader learns what happens to them. Narrative writing can also include dialogue",
+    "examples": [
+      "All types of fiction (e.g., novels, short stories, novellas)",
+      "Poetry",
+      "Biographies",
+      "Human interest stories",
+      "Anecdotes"
+    ]
+  }
+]

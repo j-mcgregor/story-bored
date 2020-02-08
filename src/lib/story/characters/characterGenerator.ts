@@ -1,8 +1,8 @@
 import * as faker from 'faker';
-import { selectRandomItem } from './helpers';
-import { traits } from './characterFeatures';
-import { ICharGeneratorOptions, ICharGenerator } from 'story';
-import firstNames from '../../../json/firstNames.json';
+import { selectRandomItem } from '../helpers';
+import { traits } from './features';
+import { ICharGeneratorOptions, ICharGenerator } from '../../../types/story';
+import firstNames from '../../../../json/firstNames.json';
 
 /**
  * @func assignItemToObject

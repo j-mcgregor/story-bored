@@ -1,0 +1,50 @@
+[
+  {
+    "stage": "STASIS",
+    "summary": "The character or their world is in a state of stagnation.",
+    "storyOrder": 1,
+    "plottingOrder": 2
+  },
+  {
+    "stage": "TRIGGER",
+    "summary": "Something happens, or the character does something to set the story in motion.",
+    "storyOrder": 2,
+    "plottingOrder": 4
+  },
+  {
+    "stage": "QUEST",
+    "summary": "The character or one of their allies has a plan. For better or worse, they decide to follow it.",
+    "storyOrder": 3,
+    "plottingOrder": 5
+  },
+  {
+    "stage": "BOLT",
+    "summary": "The plan falls victim to a surprise attack, a set-back, or a diversion.",
+    "storyOrder": 4,
+    "plottingOrder": 7
+  },
+  {
+    "stage": "SHIFT",
+    "summary": "The character undergoes the essential change that begins to transform them into their end state.",
+    "storyOrder": 5,
+    "plottingOrder": 3
+  },
+  {
+    "stage": "DEFEAT",
+    "summary": "The jaws of defeat. All hope is lost. Allies fall and the quest now seems impossible.",
+    "storyOrder": 6,
+    "plottingOrder": 8
+  },
+  {
+    "stage": "POWER",
+    "summary": "The character finds the power within themselves to change and complete the quest.",
+    "storyOrder": 7,
+    "plottingOrder": 6
+  },
+  {
+    "stage": "RESOLUTION",
+    "summary": "The character has reached their new state, which is the opposite of their Stasis state.",
+    "storyOrder": 8,
+    "plottingOrder": 1
+  }
+]

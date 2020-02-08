@@ -1,14 +1,11 @@
-import { IOptions, IHead } from 'story';
-import {
-  generateStoryLength,
-  generateBodyStructure,
-  generateCharactersList,
-  selectRandomItem,
-  promptsByGenre
-} from './helpers';
+import { IOptions, IHead } from '../../types/story';
 import prompts from '../../../json/writing_prompts.json';
 import promptsWithCategories from '../../../json/prompts_with_categories.json';
-// import googleText from '../googleText';
+import { selectRandomItem } from './helpers';
+import { promptsByGenre } from './helpers/genreHelpers';
+import { generateStoryLength } from './helpers/lengthHelpers';
+import { generateCharactersList } from './helpers/characterHelpers';
+import { generateResponse } from './structure/generateResponse';
 
 /**
  * @section HEAD
@@ -78,14 +75,16 @@ export const createHead = (options: IOptions): IHead => {
  * @returns interface IBody ====== TODO ======
  */
 export const createBody = (head: IHead) => {
-  const structure = generateBodyStructure(
-    head.structure.type,
-    head.structure.prologue,
-    head.structure.epilogue,
-    head.length.maxWords,
-    head.length.minWords,
-    head.length.avChapters
-  );
+  const bodyOptions = {
+    type: head.structure.type,
+    prologue: head.structure.prologue,
+    epilogue: head.structure.epilogue,
+    minWords: head.length.maxWords,
+    maxWords: head.length.minWords,
+    avChapters: head.length.avChapters
+  };
+
+  const structure = generateResponse(bodyOptions);
 
   return {
     meta: {

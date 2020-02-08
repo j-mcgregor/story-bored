@@ -1,3 +1,5 @@
+import { ECharacterType, EStructureType, EGenres, EStoryLength } from 'enum';
+
 /**
  * @types INTERFACES
  */
@@ -25,7 +27,7 @@ export interface ISection {
 }
 
 export interface IStructure {
-  type: StructureType;
+  type: EStructureType;
   prologue?: boolean;
   epilogue?: boolean;
 }
@@ -136,53 +138,11 @@ export interface ICharGenerator {
   };
 }
 
-/**
- * @type ENUM
- */
-
-export enum StructureType {
-  TRADITIONAL = 'TRADITIONAL'
-}
-
-export enum EStoryLength {
-  FLASH = 'FLASH',
-  SHORT = 'SHORT',
-  NOVELLA = 'NOVELLA',
-  NOVEL = 'NOVEL',
-  EPIC = 'EPIC'
-}
-
-export enum EGoodness {
-  GOOD = 'GOOD',
-  EVIL = 'EVIL',
-  SECRET_GOOD = 'SECRET_GOOD',
-  SECRET_EVIL = 'SECRET_EVIL',
-  TRANSFORMED_GOOD = 'TRANSFORMED_GOOD',
-  TRANSFORMED_EVIL = 'TRANSFORMED_EVIL'
-}
-
-export enum ECharacterType {
-  PROTAGONIST = 'PROTAGONIST',
-  ANTAGONIST = 'ANTAGONIST',
-  DEUTERAGONIST = 'DEUTERAGONIST',
-  TERTIARY = 'TERTIARY',
-  CONFIDANTE = 'CONFIDANTE',
-  LOVE_INTEREST = 'LOVE_INTEREST',
-  FOIL = 'FOIL',
-  DYNAMIC_CHANGING = 'DYNAMIC_CHANGING',
-  STATIC_UNCHANGING = 'STATIC_UNCHANGING',
-  STOCK = 'STOCK',
-  SYMBOLIC = 'SYMBOLIC',
-  ROUND = 'ROUND'
-}
-
-export enum EGenres {
-  SCIFI = 'SCIFI',
-  CRIME = 'CRIME',
-  HORROR = 'HORROR',
-  FANTASY = 'FANTASY',
-  ROMANCE = 'ROMANCE',
-  RELIGIOUS = 'RELIGIOUS',
-  HISTORICAL = 'HISTORICAL',
-  INSPIRATION = 'INSPIRATION'
+export interface IBodyStructureType {
+  type: EStructureType;
+  prologue?: boolean;
+  epilogue?: boolean;
+  maxWords?: number;
+  minWords?: number;
+  avChapters: number;
 }

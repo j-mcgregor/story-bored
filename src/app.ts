@@ -80,7 +80,11 @@ const init = () => {
 
   app.get('/api/story/prompts', storyController.getPrompts);
   app.get('/api/story/analyse', storyController.categorisePrompts);
-  app.post('/api/story/create', storyController.generateStructure);
+  app.get('/api/story/plot/device', storyController.plotDevice);
+
+  app.post('/api/story/create', storyController.generateResponse);
+  app.post('/api/story/structure', storyController.createStoryStructure);
+  app.post('/api/story/character/create', storyController.createCharacter);
 
   return app;
 };

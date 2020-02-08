@@ -1,0 +1,162 @@
+[
+  {
+    "defaultStage": "STASIS",
+    "defaultScene": 1,
+    "description": "A scene that shows how [NAME] lacks [WANT/GOAL/NEED]."
+  },
+  {
+    "defaultStage": "STASIS",
+    "defaultScene": 2,
+    "description": "A scene that shows how [NAME] is [STASIS STATE]."
+  },
+  {
+    "defaultStage": "STASIS",
+    "defaultScene": 3,
+    "description": "A scene that shows how [NAME]’s world is [STASIS STATE]."
+  },
+  {
+    "defaultStage": "TRIGGER",
+    "defaultScene": 4,
+    "description": "A scene in which [NAME] tries to convince someone that their [WANT/GOAL/NEED] is important and urgent."
+  },
+  {
+    "defaultStage": "TRIGGER",
+    "defaultScene": 5,
+    "description": "A scene in which a stranger comes looking for [NAME] because of their [OCCUPATION]."
+  },
+  {
+    "defaultStage": "TRIGGER",
+    "defaultScene": 6,
+    "description": "A scene in which a stranger comes looking for [NAME] to settle an old score (which might relate to an [OBSTACLE])."
+  },
+  {
+    "defaultStage": "TRIGGER",
+    "defaultScene": 7,
+    "description": "A scene in which a stranger comes looking for [NAME] to help them gain/achieve their [WANT/GOAL/NEED]."
+  },
+  {
+    "defaultStage": "QUEST",
+    "defaultScene": 8,
+    "description": "[NAME] meets/is introduced to and gets to know [NAME] and [NAME] (or an [OCCUPATION]."
+  },
+  {
+    "defaultStage": "QUEST",
+    "defaultScene": 9,
+    "description": "[NAME] travels to a new [LOCATION]."
+  },
+  {
+    "defaultStage": "QUEST",
+    "defaultScene": 10,
+    "description": "[NAME] successfully passes a threshold guardian to enter new [LOCATION]."
+  },
+  {
+    "defaultStage": "QUEST",
+    "defaultScene": 11,
+    "description": "[NAME] makes a plan, or has a plan thrust on them. They’re not entirely convinced but it’s the best plan they’ve got."
+  },
+  {
+    "defaultStage": "QUEST",
+    "defaultScene": 12,
+    "description": "The plan is put into effect but is either only partially successful or fails completely."
+  },
+  {
+    "defaultStage": "BOLT",
+    "defaultScene": 13,
+    "description": "An attack takes [NAME] and their friends by surprise. They retaliate to the best of their abilities."
+  },
+  {
+    "defaultStage": "BOLT",
+    "defaultScene": 14,
+    "description": "A scene in which [NAME] is tempted by someone or something and forgets their [WANT/NEED/GOAL]."
+  },
+  {
+    "defaultStage": "BOLT",
+    "defaultScene": 15,
+    "description": "A scene in which [NAME] doubts the true worth of their [WANT/GOAL/NEED] or of their quest."
+  },
+  {
+    "defaultStage": "BOLT",
+    "defaultScene": 16,
+    "description": "A scene in which [NAME] deals with a detour that may or may not be directly related to their quest."
+  },
+  {
+    "defaultStage": "SHIFT",
+    "defaultScene": 17,
+    "description": "A scene which gives [NAME] a glimpse of the [RESOLUTION STATE] and how to achieve it."
+  },
+  {
+    "defaultStage": "SHIFT",
+    "defaultScene": 18,
+    "description": "A scene in which the character understands the true nature of the [LOSS/SACRIFICE] or its necessity to achieving their [WANT/GOAL/NEED]."
+  },
+  {
+    "defaultStage": "SHIFT",
+    "defaultScene": 19,
+    "description": "A scene in which [NAME] makes the choice to continue with the Quest, despite past and present [OBSTACLE] and future [LOSS/SACRIFICE]."
+  },
+  {
+    "defaultStage": "DEFEAT",
+    "defaultScene": 20,
+    "description": "[NAME] makes the [LOSS/SACRIFICE]."
+  },
+  {
+    "defaultStage": "DEFEAT",
+    "defaultScene": 21,
+    "description": "[OBSTACLE] piles upon [OBSTACLE]."
+  },
+  {
+    "defaultStage": "DEFEAT",
+    "defaultScene": 22,
+    "description": "[NAME] and allies are faced with the greatest [OBSTACLE] yet."
+  },
+  {
+    "defaultStage": "DEFEAT",
+    "defaultScene": 23,
+    "description": "The quest seems impossible as all allies are captured or lost."
+  },
+  {
+    "defaultStage": "DEFEAT",
+    "defaultScene": 24,
+    "description": "[NAME] undergoes literal or symbolic death."
+  },
+  {
+    "defaultStage": "POWER",
+    "defaultScene": 25,
+    "description": "A scene in which [NAME] realises that a piece of information, a skill or a power they have within themselves (and have had all along) allows them to achieve their [WANT/GOAL/NEED] or defeat their enemy."
+  },
+  {
+    "defaultStage": "POWER",
+    "defaultScene": 26,
+    "description": "A scene in which [NAME] fulfils a prophecy, fate, or the expectations of their loved ones."
+  },
+  {
+    "defaultStage": "POWER",
+    "defaultScene": 27,
+    "description": "[NAME] takes on a new name, epithet or rank."
+  },
+  {
+    "defaultStage": "POWER",
+    "defaultScene": 28,
+    "description": "[NAME] gains new admirers, followers or friends who are drawn to their power."
+  },
+  {
+    "defaultStage": "RESOLUTION",
+    "defaultScene": 29,
+    "description": "A scene that shows how [NAME] has gained/accomplished [WANT/GOAL/NEED]."
+  },
+  {
+    "defaultStage": "RESOLUTION",
+    "defaultScene": 30,
+    "description": "A scene that shows how [NAME] is [RESOLUTION STATE]."
+  },
+  {
+    "defaultStage": "RESOLUTION",
+    "defaultScene": 31,
+    "description": "[NAME] celebrates victory with [NAME]. They remember the allies they lost."
+  },
+  {
+    "defaultStage": "RESOLUTION",
+    "defaultScene": 32,
+    "description": "[NAME] inhabits [LOCATION] that is representative of the new world."
+  }
+]

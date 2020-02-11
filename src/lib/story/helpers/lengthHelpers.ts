@@ -1,4 +1,4 @@
-import { IStoryLength } from '../../../types/story';
+import { IStoryLength } from '../../../types';
 import { EStoryLength } from '../../../types/enum';
 import storyLengthTypes from '../length/storyLengthTypes';
 

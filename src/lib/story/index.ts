@@ -1,4 +1,4 @@
-import { IOptions, IHead } from '../../types/story';
+import { IOptions, IHead } from '../../types';
 import prompts from '../../../json/writing_prompts.json';
 import promptsWithCategories from '../../../json/prompts_with_categories.json';
 import { selectRandomItem } from './helpers';

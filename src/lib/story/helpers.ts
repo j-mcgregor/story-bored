@@ -1,4 +1,4 @@
-import { ISection } from '../../types/story';
+import { ISection } from '../../types';
 
 /**
  * @func: Calculates the number of words per section (start / middle / end) depending on if a prologue / epiloge section has been chosen

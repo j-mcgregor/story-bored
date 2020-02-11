@@ -1,24 +1,19 @@
-import storyArc from '../../../../json/story_arc_1.json';
-import stages from '../../../../json/story_arc_stages.json';
-import { generateResponse } from '../structure/generateResponse';
+import { generateSections } from '../structure/generateSections';
 import StoryLengthTypes from '../length/storyLengthTypes';
-import { EStructureType, EStoryLength } from '../../../types/enum';
+import { EStructureType } from '../../../types/enum';
+import { IStructureOptions, ISection } from '../../../types';
+import { generateStages } from './generateStages';
+import { generateChapters } from './generateChapters';
+import { generateScenes } from './generateScenes';
 
-export interface IDefaults {
-  sections?: boolean;
-  stages?: boolean;
-  chapters?: boolean;
-  scenes?: boolean;
-}
+const defaults = {
+  sections: true,
+  stages: true,
+  chapters: true,
+  scenes: true
+};
 
-export interface IStructureOptions {
-  storyLength: EStoryLength;
-  prologue?: boolean;
-  epilogue?: boolean;
-  applyDefaults: IDefaults;
-}
-
-export default (options: IStructureOptions) => {
+export default ({ applyDefaults = defaults, ...options }: IStructureOptions): ISection[] => {
   const { minWords, maxWords, avChapters } = StoryLengthTypes[options.storyLength];
 
   const bodyStructureOptions = {
@@ -30,35 +25,32 @@ export default (options: IStructureOptions) => {
     avChapters
   };
 
-  /**
-   * @desc if applyDefaults.sections
-   */
-
-  const structure = generateResponse(bodyStructureOptions);
-  console.log(structure);
+  let sections = generateSections(bodyStructureOptions);
 
   /**
    * @desc if applyDefaults.stages
    */
 
-  const structureWithStages = () => {};
+  if (applyDefaults.stages) {
+    sections = generateStages(sections);
+  }
 
   /**
    * @desc if applyDefaults.chapters
    */
 
-  const structureWithChapters = () => {};
-
+  if (applyDefaults.chapters) {
+    sections = generateChapters(avChapters, sections);
+  }
   /**
    * @desc if applyDefaults.scenes
    */
 
-  const structureWithScenes = () => {};
+  if (applyDefaults.scenes) {
+    sections = generateScenes(sections);
+  }
 
-  return stages.map(stage => ({
-    ...stage,
-    scenes: storyArc.filter(arc => arc.defaultStage === stage.stage)
-  }));
+  return sections;
 };
 
 /**
@@ -72,7 +64,7 @@ export default (options: IStructureOptions) => {
  */
 
 /**
- * SECTION  ==> generateResponse('TRADITIONAL')
+ * SECTION  ==> generateSections('TRADITIONAL')
  * STAGE    ==> apply DEFAULT STAGES to TRADITIONAL?
  * CHAPTERS ==> apply chapter spread evenly?
  * SCENE    ==> apply DEFAULT SCENES to STAGES

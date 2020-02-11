@@ -48,3 +48,14 @@ export enum EGenres {
   HISTORICAL = 'HISTORICAL',
   INSPIRATION = 'INSPIRATION'
 }
+
+export enum EStages {
+  STASIS = 'STASIS',
+  TRIGGER = 'TRIGGER',
+  QUEST = 'QUEST',
+  BOLT = 'BOLT',
+  SHIFT = 'SHIFT',
+  DEFEAT = 'DEFEAT',
+  POWER = 'POWER',
+  RESOLUTION = 'RESOLUTION'
+}

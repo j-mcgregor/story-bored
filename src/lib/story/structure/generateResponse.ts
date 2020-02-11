@@ -1,4 +1,4 @@
-import { ISection, IChapter, IBodyStructureType } from '../../../types/story';
+import { ISection, IChapter, IBodyStructureType } from '../../../types';
 import { EStructureType } from '../../../types/enum';
 import { calcWordsPerSection } from '../helpers';
 import { chunk } from 'lodash';

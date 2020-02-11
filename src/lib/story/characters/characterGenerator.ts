@@ -1,7 +1,7 @@
 import * as faker from 'faker';
 import { selectRandomItem } from '../helpers';
 import { traits } from './features';
-import { ICharGeneratorOptions, ICharGenerator } from '../../../types/story';
+import { ICharGeneratorOptions, ICharGenerator } from '../../../types';
 import firstNames from '../../../../json/firstNames.json';
 
 /**

@@ -1,4 +1,4 @@
-import { ICharacterType, ICharacterDesc } from '../../../types/story';
+import { ICharacterType, ICharacterDesc } from '../../../types';
 import { EStoryLength } from '../../../types/enum';
 import characterTypes from '../characters/characterTypes';
 import { selectRandomItem, duplicateItems } from '../helpers';

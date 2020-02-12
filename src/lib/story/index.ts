@@ -1,6 +1,6 @@
 import { IOptions, IHead } from '../../types';
-import prompts from '../../../json/writing_prompts.json';
-import promptsWithCategories from '../../../json/prompts_with_categories.json';
+import prompts from '../../data/literature/writing_prompts.json';
+import promptsWithCategories from '../../data/literature/prompts_with_categories.json';
 import { selectRandomItem } from './helpers';
 import { promptsByGenre } from './helpers/genreHelpers';
 import { generateStoryLength } from './helpers/lengthHelpers';

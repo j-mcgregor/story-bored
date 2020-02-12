@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
-import prompts from '../../json/writing_prompts.json';
+import prompts from '../data/literature/writing_prompts.json';
 import { createHead, createBody } from '../lib/story';
 import { saveJSON } from '../util/handleFiles';
 import analyseText from '../lib/textAnalysis/analyseText';
 import getPlotDevice from '../lib/story/plot';
+import eventGenerator from '../lib/story/plot/eventGenerator';
 import characterGenerator from '../lib/story/characters/characterGenerator';
 import generateStructure from '../lib/story/structure/generateStructure';
 
@@ -86,4 +87,16 @@ export const createCharacter = (req: Request, res: Response) => {
 export const plotDevice = (req: Request, res: Response) => {
   const device = getPlotDevice();
   res.json(device);
+};
+
+/**
+ * *******************************************************
+ * @method GET
+ * @path /api/story/plot/event
+ * *******************************************************
+ */
+
+export const event = (req: Request, res: Response) => {
+  const event = eventGenerator();
+  res.json(event);
 };

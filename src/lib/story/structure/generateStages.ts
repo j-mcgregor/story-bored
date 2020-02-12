@@ -1,26 +1,26 @@
-import stagesList from '../../../../json/stages.json';
+import stagesList from '../../../data/literature/stages.json';
 import { ISection } from '../../../types';
 
 export const generateStages = (sections: ISection[]): ISection[] => {
-  return sections.map((sect: ISection) => {
-    switch (sect.name) {
+  return sections.map((section: ISection) => {
+    switch (section.name) {
       case 'beginning':
         return {
-          ...sect,
+          ...section,
           stages: stagesList.filter(s => s.storyOrder <= 2)
         };
       case 'middle':
         return {
-          ...sect,
+          ...section,
           stages: stagesList.filter(s => s.storyOrder > 2 && s.storyOrder <= 6)
         };
       case 'end':
         return {
-          ...sect,
+          ...section,
           stages: stagesList.filter(s => s.storyOrder > 6)
         };
       default:
-        return { ...sect, stages: [] };
+        return { ...section, stages: [] };
     }
   });
 };

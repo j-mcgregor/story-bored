@@ -6,20 +6,36 @@ import { generateStages } from './generateStages';
 import { generateChapters } from './generateChapters';
 import { generateScenes } from './generateScenes';
 
+/**
+ * Defaults is so it no options get passed through, they'll appear as default
+ */
 const defaults = {
   sections: true,
   stages: true,
   chapters: true,
-  scenes: true
+  scenes: true,
+  nested: true // nested is to spread the stages / chapters / scenes across the sections
 };
 
-export default ({ applyDefaults = defaults, ...options }: IStructureOptions): ISection[] => {
-  const { minWords, maxWords, avChapters } = StoryLengthTypes[options.storyLength];
+/**
+ * @func generateStructure
+ * @param StructureOptions = { applyDefaults = defaults, storyLength, epilogue, prologue }
+ */
+
+export default ({
+  applyDefaults = defaults,
+  storyLength,
+  prologue = false,
+  epilogue = false
+}: IStructureOptions): ISection[] => {
+  const { minWords, maxWords, avChapters } = StoryLengthTypes[storyLength];
+  const { nested } = applyDefaults;
+  const isTooShort = storyLength === 'FLASH' || storyLength === 'SHORT';
 
   const bodyStructureOptions = {
     type: EStructureType.TRADITIONAL,
-    prologue: options.prologue || false,
-    epilogue: options.epilogue || false,
+    prologue: prologue || false,
+    epilogue: epilogue || false,
     maxWords,
     minWords,
     avChapters
@@ -31,41 +47,25 @@ export default ({ applyDefaults = defaults, ...options }: IStructureOptions): IS
    * @desc if applyDefaults.stages
    */
 
-  if (applyDefaults.stages) {
+  if (applyDefaults.stages && !isTooShort) {
     sections = generateStages(sections);
   }
 
   /**
    * @desc if applyDefaults.chapters
+   * @note not applicable to FLASH or SHORT STORIES
    */
 
-  if (applyDefaults.chapters) {
-    sections = generateChapters(avChapters, sections);
+  if (applyDefaults.chapters && !isTooShort) {
+    sections = generateChapters(avChapters, sections, nested);
   }
   /**
    * @desc if applyDefaults.scenes
    */
 
-  if (applyDefaults.scenes) {
-    sections = generateScenes(sections);
+  if (applyDefaults.scenes && !isTooShort) {
+    sections = generateScenes(sections, nested);
   }
 
   return sections;
 };
-
-/**
- * 3 Parts to pay attention to:
- *
- * 1 ==> SECTION: [[prologue,] beginning, middle, end [, epilogue]]
- * 2 ==> STAGE: [[STASIS, TRIGGER], [QUEST, BOLT, SHIFT, DEFEAT], [POWER, RESOLUTION]]
- * 3 ==> CHAPTERS
- * 4 ==> SCENES
- *
- */
-
-/**
- * SECTION  ==> generateSections('TRADITIONAL')
- * STAGE    ==> apply DEFAULT STAGES to TRADITIONAL?
- * CHAPTERS ==> apply chapter spread evenly?
- * SCENE    ==> apply DEFAULT SCENES to STAGES
- */

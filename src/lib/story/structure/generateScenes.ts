@@ -1,5 +1,7 @@
-import { ISection, IScene } from '../../../types';
-import scenes from '../../../../json/scenes.json';
+import { ISection, IScene, IStage } from '../../../types';
+import scenes from '../../../data/literature/scenes.json';
+import { chunk } from 'lodash';
+import { divider } from './generateChapters';
 
 // return Section[] but with a list of scenes relevant to its place in the story
 export const section1Scenes = ['STASIS', 'TRIGGER'];
@@ -14,7 +16,7 @@ export const sortScenes = (arr: IScene[]) => {
   return [section1, section2, section3];
 };
 
-export const generateScenes = (sections: ISection[]): ISection[] => {
+export const generateScenes = (sections: ISection[], nested: boolean): ISection[] => {
   return sections.map(section => {
     const copiedScenes = [...scenes];
 
@@ -22,20 +24,41 @@ export const generateScenes = (sections: ISection[]): ISection[] => {
 
     switch (section.name) {
       case 'beginning':
-        return {
-          ...section,
-          scenes: section1
-        };
+        if (nested) {
+          return {
+            ...section,
+            stages: section.stages.map((st: IStage) => ({
+              ...st,
+              scenes: section1.filter(cs => cs.defaultStage === st.stage)
+            }))
+          };
+        } else {
+          return { ...section, scenes: section1 };
+        }
       case 'middle':
-        return {
-          ...section,
-          scenes: section2
-        };
+        if (nested) {
+          return {
+            ...section,
+            stages: section.stages.map((st: IStage) => ({
+              ...st,
+              scenes: section2.filter(cs => cs.defaultStage === st.stage)
+            }))
+          };
+        } else {
+          return { ...section, scenes: section2 };
+        }
       case 'end':
-        return {
-          ...section,
-          scenes: section3
-        };
+        if (nested) {
+          return {
+            ...section,
+            stages: section.stages.map((st: IStage) => ({
+              ...st,
+              scenes: section3.filter(cs => cs.defaultStage === st.stage)
+            }))
+          };
+        } else {
+          return { ...section, scenes: section3 };
+        }
       default:
         return { ...section, scenes: [] };
     }

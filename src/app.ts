@@ -81,6 +81,7 @@ const init = () => {
   app.get('/api/story/prompts', storyController.getPrompts);
   app.get('/api/story/analyse', storyController.categorisePrompts);
   app.get('/api/story/plot/device', storyController.plotDevice);
+  app.get('/api/story/plot/event', storyController.event);
 
   app.post('/api/story/create', storyController.generateResponse);
   app.post('/api/story/structure', storyController.createStoryStructure);

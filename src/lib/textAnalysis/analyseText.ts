@@ -1,5 +1,5 @@
 import { keywords } from './genre';
-import prompts from '../../../json/writing_prompts.json';
+import prompts from '../../data/literature/writing_prompts.json';
 
 interface IPrompt {
   prompt: string;

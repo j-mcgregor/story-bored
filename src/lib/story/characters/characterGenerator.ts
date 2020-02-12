@@ -2,7 +2,7 @@ import * as faker from 'faker';
 import { selectRandomItem } from '../helpers';
 import { traits } from './features';
 import { ICharGeneratorOptions, ICharGenerator } from '../../../types';
-import firstNames from '../../../../json/firstNames.json';
+import firstNames from '../../../data/humans/firstNames.json';
 
 /**
  * @func assignItemToObject

@@ -15,6 +15,7 @@ export interface IStructureDefaults {
   stages?: boolean;
   chapters?: boolean;
   scenes?: boolean;
+  nested?: boolean;
 }
 
 export interface IStructureOptions {
